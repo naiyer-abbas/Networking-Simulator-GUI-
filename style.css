@@ -1,0 +1,260 @@
+h1{
+    color: purple;
+    text-align: center;
+    font-size: 50px;
+}
+
+h2
+{
+    color:yellow;
+    text-align: center;
+    margin-top: 4%;
+    font-size: 30px;
+}
+
+h3
+{
+    color:white;
+    font-size: 20px;
+}
+
+h4
+{
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}
+
+.options
+{
+    width: 40%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    margin-top: 2%;
+    
+}
+
+.btn{
+    background-color: black;
+    color: whitesmoke;
+    font-size: 20px;
+    border: 1;
+    border-color: lightseagreen;
+    width: 20%;
+    height: 70px;
+    display: inline-block;
+    text-align: center;
+    transition-duration: 0.3s;
+    border-radius: 5px;
+    padding-top: 2%;
+    padding-bottom: 4%;
+    margin-right: 8%;
+    display: list-item;
+    margin-top: 10%;
+
+}
+
+.btn:hover{
+    background-color: black;
+    color: white;
+    border-color: red;
+}
+
+body
+{
+    
+    background-image: url("3.png");
+}    
+
+.values
+{
+    width: 40%;
+    height: auto;
+    display: flex;
+    text-align: center;
+    padding-bottom: 1%;
+    padding-top: 3%;
+    padding-right: 4.7%;
+    margin: auto;
+
+}
+
+.counter
+{
+    text-align: center;
+    margin: auto;
+    font-size: 25px;
+    color: yellow;
+}
+
+.connection
+{
+    height: auto;
+    display: flex;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+    padding-right: 4.7%;
+}
+
+.d2d
+{
+    margin: auto;
+    display: inline-block;
+    width: 60%;
+
+}
+
+.con
+{
+    width: 50%;
+    text-align: center;
+    font-size: 14px;
+    min-width: fit-content;
+}
+
+.make_connection
+{
+    text-align: center;
+    background-color: black;
+    color: whitesmoke;
+    border: 1;
+    border-color: lightseagreen;
+    text-align: center;
+    transition-duration: 0.3s;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 18px;
+    min-width: fit-content;
+}
+
+.make_connection:hover
+{
+    background-color: black;
+    color: white;
+    border-color: red;
+}
+
+#CD
+{
+    padding-top: 7%;
+    background-color: inherit;
+    margin: auto;
+    display: flex;
+    width: 40%;
+}
+
+#CD_button
+{
+    text-align: center;
+    background-color: rgb(34, 34, 151);
+    color: whitesmoke;
+    border: 1;
+    border-color: lightseagreen;
+    text-align: center;
+    transition-duration: 0.3s;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 18px;
+    max-width: fit-content;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#CD_button:hover
+{
+    color: white;
+    animation: ease-out;
+    border-radius: 3%;
+    border-color: red;
+}
+
+.reset
+{
+    padding-top: 2%;
+    padding-bottom: 1%;
+    background-color:inherit;
+    margin: auto;
+    display: flex;
+    width: 70%;
+}
+
+#reset_button
+{
+    text-align: center;
+    background-color: rgb(34, 34, 151);
+    color: whitesmoke;
+    border: 1;
+    border-color: lightseagreen;
+    text-align: center;
+    transition-duration: 0.3s;
+    border-radius: 5px;
+    font-size: 17px;
+    width: 5%;
+    min-width: fit-content;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    max-height:fit-content;
+    float:right;
+    position: absolute;
+    top: 1%;
+    right: 1%;
+}
+
+#reset_button:hover
+{
+    background-color: rgb(53, 53, 212);
+    color: white;
+    animation: ease-out;
+    border-radius: 3%;
+    border-color: red;
+}
+
+.fc_text
+{
+    color: violet;
+}
+
+.radio_button
+{
+    margin-left: 7%;
+}
+
+.send
+{
+    margin-left: 7%;
+    margin-top: 1%;
+    width: 3.5%;
+    min-width: fit-content;
+    background-color:green;
+    border-color: lightseagreen;
+    font-size: 17px;
+    font-weight: bold;
+    min-height: fit-content;
+    color: linen;
+}
+
+.log
+{
+    float: right;
+    display: inline;
+    background-color: white;
+    height: 400px;
+    width: 25%;
+    overflow: scroll;
+    word-wrap: break-word;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.send:hover
+{
+    background-color: rgb(48, 131, 48);
+}
+
+*
+{
+    font-family: 'Times New Roman', Times, serif;
+}
