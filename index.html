@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Computer Networks </title>
+        <link rel="stylesheet" href="/style.css">
+        
+    </head>
+
+    <body>
+        <h1 id = "demo"> Computer Networks Simulator </h1>
+        <a href="Collision_domain.html"> <h3 style="float:inline-end; color: ivory; position: absolute;"> Collision domain Calculator </h3> </a>
+
+        
+        <div class = "options">
+            <button type = "button" id = "btn1" class="btn"> Add a Device </button> 
+            <button type = "button" id = "btn2" class="btn"> Add a hub </button>
+            <button type = "button" class = "btn" id = "btn3"> Add a switch </button>
+            <button type = "button" class = "btn" id = "btn4"> Add a bridge </button>
+        </div>
+
+        <div class="values">
+            <p class ="counter" id = "count1"> </p> 
+            <p class = "counter" id = "count2"> </p>
+            <p class ="counter" id = "count3"> </p>
+            <p class ="counter" id = "count4"> </p>
+        </div>
+
+        <h2> Make connections </h2>
+            <button type ="button" id = "reset_button"> Reset </button>
+
+        <div class = "connection">
+            <div class = "d2d">
+                <input type="text" class = "con" id = "dev_to_dev1" placeholder="Enter device1 number">
+                <input type="text" class = "con" id = "dev_to_dev2" placeholder="Enter device2 number">
+            </div>
+
+            
+
+            <div class = "d2d">
+                <input type="text" class = "con" id = "hub_to_dev1" placeholder="Enter hub number">
+                <input type="text" class = "con" id = "hub_to_dev2" placeholder="Enter device number">
+            </div>
+
+            <div class = "d2d">
+                <input type="text" class = "con" id = "switch_to_dev1" placeholder="Enter switch number">
+                <input type="text" class = "con" id = "switch_to_dev2" placeholder="Enter device number">
+            </div>
+
+            <div class = "d2d">
+                <input type="text" class = "con" id = "bridge_to_dev1" placeholder="Enter bridge number">
+                <input type="text" class = "con" id = "segment" placeholder = "Enter segment(L/R)">
+                <input type="text" class = "con" id = "bridge_to_dev2" placeholder="Enter device number">
+            </div>
+            
+            <div class = "d2d">
+                <input type="text" class = "con" id = "hub_to_switch1" placeholder="Enter Hub number">
+                <input type="text" class = "con" id = "hub_to_switch2" placeholder = "Enter Switch number">
+            </div> 
+        </div>
+
+        <div class="connection">
+            <div class = "d2d">
+                <button type ="button" class = "make_connection" id = "device_to_device_connection"> Make connection </button>
+            </div>
+            <div class = "d2d">
+                <button type ="button" class = "make_connection" id = "hub_to_device_connection"> Make connection </button>
+            </div>
+            <div class = "d2d">
+                <button type ="button" class = "make_connection" id = "switch_to_device_connection"> Make connection </button>
+            </div>
+            <div class = "d2d">
+                <button type = "button" class = "make_connection" id = "bridge_to_device_connection"> Make connection </button>
+            </div>
+
+            <div class = "d2d">
+                <button type = "button" class = "make_connection" id = "hub_to_switch_connection"> Make connection </button>
+            </div>
+            
+        </div>
+
+       
+
+        <h2> Remove connections </h2>
+
+        <div class = "connection">
+            <div class = "d2d">
+                <input type="text" class = "con" id = "R_dev_to_dev1" placeholder="Enter device1 number">
+                <input type="text" class = "con" id = "R_dev_to_dev2" placeholder="Enter device2 number">
+            </div>
+
+            
+
+            <div class = "d2d">
+                <input type="text" class = "con" id = "R_hub_to_dev1" placeholder="Enter hub number">
+                <input type="text" class = "con" id = "R_hub_to_dev2" placeholder="Enter device number">
+            </div>
+
+            <div class = "d2d">
+                <input type="text" class = "con" id = "R_switch_to_dev1" placeholder="Enter switch number">
+                <input type="text" class = "con" id = "R_switch_to_dev2" placeholder="Enter device number">
+            </div>
+
+            <div class = "d2d">
+                <input type="text" class = "con" id = "R_bridge_to_dev1" placeholder="Enter bridge number">
+                <input type="text" class = "con" id = "R_bridge_to_dev2" placeholder="Enter device number">
+            </div>
+            
+            <div class = "d2d">
+                <input type="text" class = "con" id = "R_hub_to_hub1" placeholder="Enter Hub number">
+                <input type="text" class = "con" id = "R_hub_to_hub2" placeholder = "Enter Switch number">
+            </div> 
+        </div>
+
+        <div class="connection">
+            <div class = "d2d">
+                <button type ="button" class = "make_connection" id = "R_device_to_device_connection"> Remove connection </button>
+            </div>
+            <div class = "d2d">
+                <button type ="button" class = "make_connection" id = "R_hub_to_device_connection"> Remove connection </button>
+            </div>
+            <div class = "d2d">
+                <button type ="button" class = "make_connection" id = "R_switch_to_device_connection"> Remove connection </button>
+            </div>
+            <div class = "d2d">
+                <button type = "button" class = "make_connection" id = "R_bridge_to_device_connection"> Remove connection </button>
+            </div>
+
+            <div class = "d2d">
+                <button type = "button" class = "make_connection" id = "R_hub_to_switch_connection"> Remove connection </button>
+            </div>
+            
+        </div>
+
+        <h2> Send Messages </h2>
+        <hr style="color: yellow;">
+
+        <div class = "d2d">
+            <h3 style="margin-left: 7%;"> Enter the devices </h3>
+            
+
+            <input type="text" class = "con" id = "device1" style = "width: auto; margin-left: 7%;" placeholder="Enter device1 number">
+            <input type="text" class = "con" id = "device2" style = "width: auto;" placeholder="Enter device2 number">
+            <h3 style="margin-left: 7%; margin-top: 1%;"> Enter the message </h3>
+            <input type = "text" class = "con" id = "message" style = "width: auto; margin-left: 7%;" placeholder="Enter message">
+            <h3 style="margin-left: 7%; margin-top: 1%;"> Select the flow control Protocol </h3>
+            <input class = "radio_button" type = "radio"  id = "fc1" name = "Protocol" checked value = "Stop and Wait">
+            <label class = "fc_text" for = "Stop and Wait"> Stop and Wait ARQ </label><br>
+            <input class = "radio_button" type = "radio" name = "Protocol" id = "fc2" value = "Selective Repeat">
+            <label class = "fc_text" for = "Selective Repeat"> Selective Repeat ARQ </label><br>
+            
+            <button type = "button" class="send" id="send_button"> Send </button>
+            
+        </div>
+
+
+        <div class = "log" id = "logg"> 
+            <h4> Message LOG </h4>
+            <hr style="border-width: 2px; border-color: black;">
+            <p id="para"> </p>
+            
+        </div>
+
+        
+
+        
+
+        
+        
+
+        
+        <script type = "module" src="./main.js"> </script>
+    </body>
+</html>

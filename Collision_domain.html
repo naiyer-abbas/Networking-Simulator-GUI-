@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Computer Networks </title>
+        <link rel="stylesheet" href="/style.css">
+        
+    </head>
+
+    <body>
+        <h1 id = "demo"> Collision Domain Calculator </h1>
+        <a href="index.html"> <h3 style="float:inline-end; color: ivory; position: absolute;"> HOME </h3> </a>
+        
+        <div class = "options">
+            <button type = "button" id = "btn1" class="btn"> Add a Device </button> 
+            <button type = "button" id = "btn2" class="btn"> Add a hub </button>
+            <button type = "button" class = "btn" id = "btn3"> Add a switch </button>
+            <button type = "button" class = "btn" id = "btn4"> Add a bridge </button>
+        </div>
+
+        <div class="values">
+            <p class ="counter" id = "count1"> </p> 
+            <p class = "counter" id = "count2"> </p>
+            <p class ="counter" id = "count3"> </p>
+            <p class ="counter" id = "count4"> </p>
+        </div>
+
+        <h2> Make connections </h2>
+
+        <div class = "connection">
+        
+            <div class = "d2d">
+                <input type="text" class = "con" id = "hub_to_dev1" placeholder="Enter hub number">
+                <input type="text" class = "con" id = "hub_to_dev2" placeholder="Enter device number">
+            </div>
+
+            <div class = "d2d">
+                <input type="text" class = "con" id = "switch_to_dev1" placeholder="Enter switch number">
+                <input type="text" class = "con" id = "switch_to_dev2" placeholder="Enter device number">
+            </div>
+            
+            <div class = "d2d">
+                <input type="text" class = "con" id = "hub_to_switch1" placeholder="Enter Hub number">
+                <input type="text" class = "con" id = "hub_to_switch2" placeholder = "Enter Switch number">
+            </div> 
+
+            <div class = "d2d">
+                <input type="text" class = "con" id = "switch_to_switch1" placeholder="Enter Switch1 number">
+                <input type="text" class = "con" id = "switch_to_switch2" placeholder = "Enter Switch2 number">
+            </div>
+        </div>
+
+        <div class="connection">
+            <div class = "d2d">
+                <button type ="button" class = "make_connection" id = "hub_to_device_connection"> Make connection </button>
+            </div>
+            <div class = "d2d">
+                <button type ="button" class = "make_connection" id = "switch_to_device_connection"> Make connection </button>
+            </div>
+
+            <div class = "d2d">
+                <button type = "button" class = "make_connection" id = "hub_to_switch_connection"> Make connection </button>
+            </div>
+
+            <div class = "d2d">
+                <button type = "button" class = "make_connection" id = "switch_to_switch_connection"> Make connection </button>
+            </div>
+            
+        </div>
+
+        <div class = "reset" style="padding-top: 0%; padding-bottom: 0%;">
+            <button type ="button" id = "reset_button"> Reset </button>
+        </div>
+
+        <div id = "CD" style = "padding-top: 3%;">
+            <button type ="button" id = "CD_button"> Calculate Collison domains </button>
+        </div>
+
+        <div class="values" style="padding-left: 3%;">
+            <p class ="counter" id = "CD_count" style="font-size: 35px;"> 0 </p>
+        </div>
+
+
+        
+        
+        <script type = "module" src= "./Collision_domain.js"> </script>
+    </body>
+</html>
