@@ -322,22 +322,36 @@ export  function stop_wait()
                 for(var i = 0; i < arguments[2].length; i++)
                 {
                     var ranDom = Math.random();
+                    var x;
+                        if(i % 2 == 0)
+                        {
+                            x = 0;
+                        }
+
+                        else
+                        {
+                            x = 1;
+                        }
+
+                    document.getElementById("para").innerHTML += " <br><br> Sequence no. is " + x + " . Sending packet " + i + " ....";
                     if(ranDom >= 0.3)
                     {
                         send_message(arguments[0],arguments[1],arguments[2].charAt(i));
-                        document.getElementById("para").innerHTML += " <br><br> Packet " + (i + 1) + " sent successfully .... "  + "Ack "+ (i+2) + " received....";
+                        document.getElementById("para").innerHTML += " <br><br> Packet " + (i) + " sent successfully .... "  + "Ack "+ (1 - x) + " received from device " + arguments[1] + " ...";
                     }
                     else
                     {
-                        document.getElementById("para").innerHTML += " <br><br> Timeout occured.Sending frame "+(i+1)+" again.....";
+                        document.getElementById("para").innerHTML += " <br><br> Timeout occured.Sending frame " + (i) + " again.....";
                         i--;
                     }
                 }
             }
+
 export  function selective_rep()
             {
                 var sender_window=[];
                 var receiver_window=[];
+                var window_size = 4;
                 var sf = 0, sn = 0;
                 for(var i = 0; i < arguments[2].length; i++)
                 {
@@ -348,7 +362,7 @@ export  function selective_rep()
                 while(n)
                 {
                     var check = 0;
-                    for(sn = 0;sn < arguments[2].length; sn++)
+                    while(sn <= sf + 3)
                     {
                         if(sender_window[sn] == "-1")
                         {
@@ -358,7 +372,68 @@ export  function selective_rep()
                                 sender_window[sn] = 1;
                                 receiver_window[sn] = 1;
                                 send_message(arguments[0],arguments[1],arguments[2].charAt(sn));
-                                document.getElementById("para").innerHTML += " <br><br> Packet "+ (sn + 1) + " received successfully ....Sending next packet ";
+                                document.getElementById("para").innerHTML += " <br><br> Packet "+ (sn) + " received successfully ....Sending next packet ";
+                                n--;
+                                if(n == 0)
+                                {
+                                    document.getElementById("para").innerHTML += "<br><br> Message transmission successful. Packets sent : " + arguments[2].length;
+                                    return;
+                                }
+
+                            }
+                            else
+                            {
+                                if(!check)
+                                {
+                                    sf = sn;
+                                    document.getElementById("para").innerHTML += " <br><br> First outstanding packet "+ (sf) + " .... "
+                                    check = 1;
+                                }
+                                document.getElementById("para").innerHTML += " <br><br> Packet " +(sn)+ " failed.Sending next packet... "
+                            }
+                        }
+
+                        sn ++;
+                        if(sn >= arguments[2].length)
+                        {
+                            break;
+                        }
+                        
+                    }
+                    if(sn >= sf + 3 || sn >= arguments[2].length) // timeout occurs here
+                        {
+                            sn = sf;
+                        }
+                }
+
+            }
+
+/*export  function selective_rep()
+            {
+                var sender_window=[];
+                var receiver_window=[];
+                var window_size = 4;
+                var sf = 0, sn = 0;
+                for(var i = 0; i < arguments[2].length; i++)
+                {
+                    sender_window.push("-1");
+                    receiver_window.push("-1");
+                }
+                var n = arguments[2].length;
+                while(n)
+                {
+                    var check = 0;
+                    for(sn = 0; sn < arguments[2].length; sn++)
+                    {
+                        if(sender_window[sn] == "-1")
+                        {
+                            var ranDom = Math.random();
+                            if(ranDom >= 0.3)
+                            {
+                                sender_window[sn] = 1;
+                                receiver_window[sn] = 1;
+                                send_message(arguments[0],arguments[1],arguments[2].charAt(sn));
+                                document.getElementById("para").innerHTML += " <br><br> Packet "+ (sn) + " received successfully ....Sending next packet ";
                                 n--;
                             }
                             else
@@ -366,15 +441,15 @@ export  function selective_rep()
                                 if(!check)
                                 {
                                     sf = sn;
-                                    document.getElementById("para").innerHTML += " <br><br> First outstanding packet "+ (sf + 1) + " .... "
+                                    document.getElementById("para").innerHTML += " <br><br> First outstanding packet "+ (sf) + " .... "
                                     check = 1;
                                 }
-                                document.getElementById("para").innerHTML += " <br><br> Packet " +(sn + 1)+ " failed.Sending next packet... "
+                                document.getElementById("para").innerHTML += " <br><br> Packet " +(sn)+ " failed.Sending next packet... "
                             }
                         }
                     }
                 }
-            }
+            }*/
 
 
 var send_button = document.getElementById("send_button");
