@@ -5,6 +5,11 @@ import {list_switches, Switch} from './Switch.js';
 import {list_bridges, Bridge} from './Bridge.js';
 
     export var tokken = 1;
+    export function reset_tokken()
+    {
+        tokken = 1;
+    }
+    
     export  function hub_swt_check()
             { 
                 for(var i = 1; i < list_switches.length; i++)

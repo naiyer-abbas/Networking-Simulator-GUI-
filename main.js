@@ -4,7 +4,7 @@ import { create_hub, C_hub, Hub } from './Hub.js';
 import { create_switch, C_switch, Switch } from './Switch.js';
 import { make_connection_device_to_device, make_connection_hub_to_device, make_connection_switch_to_device, connect_device_to_left, connect_device_to_right, make_connection_hub_to_switch, reset } from './make_connections.js';
 import { remove_connection_bge_to_device, remove_connection_end_to_end, remove_connection_hub_to_end, remove_connection_hub_to_swt, remove_connection_switch_to_end } from './remove_connections.js';
-import {send_message, send1, tokken} from './Message_Transmission.js';
+import {send_message, send1, tokken, reset_tokken} from './Message_Transmission.js';
 
 export function token_fail_message()
 {
@@ -13,7 +13,7 @@ export function token_fail_message()
 
 export function token_pass_message()
 {
-    document.getElementById("para").innerHTML += " <br><br> This device has the access to this channel now!. <br><br> Message transmission from  " + list_devices[arguments[0]].mac_address + " to  " + list_devices[arguments[1]].mac_address + " <br><br> Sending Packets..";
+    document.getElementById("para").innerHTML += " <br><br> This device has the access to this channel now!. <br><br> Message transmission from  " + list_devices[document.getElementById("device1").value].mac_address + " to  " + list_devices[document.getElementById("device2").value].mac_address + " <br><br> Sending Packets..";
 }
 
 
@@ -316,6 +316,11 @@ function reset_everything()
     document.getElementById("segment").value = null;
     document.getElementById("hub_to_switch1").value = null;
     document.getElementById("hub_to_switch2").value = null;
+    document.getElementById("device1").value = null;
+    document.getElementById("device2").value = null;
+    document.getElementById("message").value = null;
+    reset_log();
+    reset_tokken();
 }
 
 var Reset = document.getElementById("reset_button");

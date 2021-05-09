@@ -1,8 +1,11 @@
 import {list_devices, End_device, reset_devices} from './Device.js';
 import {list_hubs, Hub, reset_hubs} from './Hub.js';
-import {list_switches, Switch, reset_switches} from './Switch.js';
+import {list_switches, Switch, reset_switches, } from './Switch.js';
 import {list_bridges, Bridge, reset_bridges} from './Bridge.js';
-import {reset_log} from './main.js';
+//import {reset_log} from './main.js';
+//import {reset_tokken} from './Message_Transmission.js';
+
+    
 
     export function make_connection_device_to_device()     // device to device connection
             {
@@ -230,6 +233,7 @@ import {reset_log} from './main.js';
                 reset_hubs();
                 reset_bridges();
                 reset_devices();
-                reset_log();
+                //reset_log();
+                //reset_tokken();
             }
 

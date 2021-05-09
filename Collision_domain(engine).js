@@ -11,6 +11,11 @@ export var vis = [];
 
    export  function calculate_CD()
             {
+                if(list_switches.length == 1)
+                {
+                    return 1;
+                }
+                
                 if(arguments[0] == "-1")
                 {
                     return 0;

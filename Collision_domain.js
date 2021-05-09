@@ -123,7 +123,6 @@ function hub_to_switch()
 function switch_to_switch_()
 {
     var check = switch_to_switch(document.getElementById("switch_to_switch1").value, document.getElementById("switch_to_switch2").value);
-    if(check == "invalid");
     if(check == "invalid")
     {
         alert("Invalid Entries");
@@ -147,6 +146,7 @@ function reset_everything()
     t2.innerText = 0;
     t3.innerText = 0;
     t4.innerText = 0;
+    res.innerText = 0;
 
     document.getElementById("hub_to_dev1").value = null;
     document.getElementById("hub_to_dev2").value = null;
