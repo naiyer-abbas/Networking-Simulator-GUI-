@@ -1,5 +1,5 @@
 import { list_devices, End_device} from "./Device.js";
-import {selective_rep, stop_wait} from './main.js'; 
+import {selective_rep, stop_wait, token_fail_message, token_pass_message} from './main.js'; 
 import {list_hubs, Hub} from './Hub.js';
 import {list_switches, Switch} from './Switch.js';
 import {list_bridges, Bridge} from './Bridge.js';
@@ -105,6 +105,7 @@ import {list_bridges, Bridge} from './Bridge.js';
 
                 if(arguments[0] == tokken || end_to_end)
                 {
+                    token_pass_message(arguments[0], arguments[1]);
                     if(arguments[3] == 1)
                     {
                         stop_wait(arguments[0],arguments[1],arguments[2]);
@@ -129,12 +130,15 @@ import {list_bridges, Bridge} from './Bridge.js';
                 {
                     while(tokken != arguments[0])
                     {
+                        token_fail_message();
                         tokken ++;
                         if(tokken == list_devices.length)
                         {
                             tokken = 1;
                         }
                     }
+
+                    token_pass_message();
                     
                     if(arguments[3] == 1)
                     {

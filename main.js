@@ -4,7 +4,17 @@ import { create_hub, C_hub, Hub } from './Hub.js';
 import { create_switch, C_switch, Switch } from './Switch.js';
 import { make_connection_device_to_device, make_connection_hub_to_device, make_connection_switch_to_device, connect_device_to_left, connect_device_to_right, make_connection_hub_to_switch, reset } from './make_connections.js';
 import { remove_connection_bge_to_device, remove_connection_end_to_end, remove_connection_hub_to_end, remove_connection_hub_to_swt, remove_connection_switch_to_end } from './remove_connections.js';
-import {send_message, send1} from './Message_Transmission.js';
+import {send_message, send1, tokken} from './Message_Transmission.js';
+
+export function token_fail_message()
+{
+    document.getElementById("para").innerHTML += " <br><br> Currently the sender does not have access to the channel!. Token is at device : " + tokken + " ..Waiting to get access";
+}
+
+export function token_pass_message()
+{
+    document.getElementById("para").innerHTML += " <br><br> This device has the access to this channel now!. <br><br> Message transmission from  " + list_devices[arguments[0]].mac_address + " to  " + list_devices[arguments[1]].mac_address + " <br><br> Sending Packets..";
+}
 
 
 var b1 = document.getElementById("btn1");
@@ -347,7 +357,7 @@ export  function stop_wait()
                 }
             }
 
-export  function selective_rep()
+            export  function selective_rep()
             {
                 var sender_window=[];
                 var receiver_window=[];
@@ -362,7 +372,7 @@ export  function selective_rep()
                 while(n)
                 {
                     var check = 0;
-                    while(sn <= sf + 3)
+                    for(sn = sf; sn < arguments[2].length && sn <= sf + 3; sn++)
                     {
                         if(sender_window[sn] == "-1")
                         {
@@ -372,84 +382,52 @@ export  function selective_rep()
                                 sender_window[sn] = 1;
                                 receiver_window[sn] = 1;
                                 send_message(arguments[0],arguments[1],arguments[2].charAt(sn));
-                                document.getElementById("para").innerHTML += " <br><br> Packet "+ (sn) + " received successfully ....Sending next packet ";
+                                document.getElementById("para").innerHTML += " <br><br> Packet "+ (sn) + " with seq.no : " + sn % 8 + " sent successfully ....Received ACK no " + (sn % 8) + " from the receiver";
                                 n--;
+                                if(sn == sf)
+                                {
+                                    for(var j = sf; j < arguments[2].length; j++)
+                                    {
+                                        if(sender_window[j] == "-1")
+                                        {
+                                            sf = j;
+                                            sn = sf - 1;
+                                            break;
+                                        }
+                                    }
+                                }
+
                                 if(n == 0)
                                 {
-                                    document.getElementById("para").innerHTML += "<br><br> Message transmission successful. Packets sent : " + arguments[2].length;
                                     return;
                                 }
-
                             }
                             else
                             {
+                                document.getElementById("para").innerHTML += " <br><br> Packet " +(sn)+ " with seq.no : " + sn % 8 + " failed. No Ack received";
                                 if(!check)
                                 {
                                     sf = sn;
-                                    document.getElementById("para").innerHTML += " <br><br> First outstanding packet "+ (sf) + " .... "
+                                    document.getElementById("para").innerHTML += " <br><br> First outstanding packet "+ (sf) + " .... ";
                                     check = 1;
                                 }
-                                document.getElementById("para").innerHTML += " <br><br> Packet " +(sn)+ " failed.Sending next packet... "
+                                
                             }
                         }
-
-                        sn ++;
-                        if(sn >= arguments[2].length)
-                        {
-                            break;
-                        }
-                        
                     }
-                    if(sn >= sf + 3 || sn >= arguments[2].length) // timeout occurs here
-                        {
-                            sn = sf;
-                        }
-                }
+                    
+                    document.getElementById("para").innerHTML += " <br><br> Restaring the Timer...";
+                    document.getElementById("para").innerHTML += " <br><br> First outstanding packet "+ (sf) + " .... ";
 
+                    sn = sf;
+                }
             }
 
-/*export  function selective_rep()
-            {
-                var sender_window=[];
-                var receiver_window=[];
-                var window_size = 4;
-                var sf = 0, sn = 0;
-                for(var i = 0; i < arguments[2].length; i++)
-                {
-                    sender_window.push("-1");
-                    receiver_window.push("-1");
-                }
-                var n = arguments[2].length;
-                while(n)
-                {
-                    var check = 0;
-                    for(sn = 0; sn < arguments[2].length; sn++)
-                    {
-                        if(sender_window[sn] == "-1")
-                        {
-                            var ranDom = Math.random();
-                            if(ranDom >= 0.3)
-                            {
-                                sender_window[sn] = 1;
-                                receiver_window[sn] = 1;
-                                send_message(arguments[0],arguments[1],arguments[2].charAt(sn));
-                                document.getElementById("para").innerHTML += " <br><br> Packet "+ (sn) + " received successfully ....Sending next packet ";
-                                n--;
-                            }
-                            else
-                            {
-                                if(!check)
-                                {
-                                    sf = sn;
-                                    document.getElementById("para").innerHTML += " <br><br> First outstanding packet "+ (sf) + " .... "
-                                    check = 1;
-                                }
-                                document.getElementById("para").innerHTML += " <br><br> Packet " +(sn)+ " failed.Sending next packet... "
-                            }
-                        }
-                    }
-                }
-            }*/
+    export function reset_log()
+    {
+        document.getElementById("para").innerHTML = "";
+    }        
+
 
 
 var send_button = document.getElementById("send_button");
@@ -477,10 +455,15 @@ function transmit()
 
     for(var i = 1; i < list_devices.length; i++)
     {
-        if(list_devices[i].message != "")
+        if(list_devices[i].message != "" && i != document.getElementById("device2").value)
         {
-            document.getElementById("para").innerHTML += "<br><br> Device number : " + i + "  ( " +  list_devices[i].get_mac_address() + " ) :  " + list_devices[i].message;
-        }   
+            document.getElementById("para").innerHTML += "<br><br> Device number : " + i + "  ( " +  list_devices[i].get_mac_address() + " ) received and rejected " + list_devices[i].message;
+        }
+        
+        else if(i == document.getElementById("device2").value)
+        {
+            document.getElementById("para").innerHTML += "<br><br> Device number : " + i + "  ( " +  list_devices[i].get_mac_address() + " ) received and accepted " + list_devices[i].message;
+        }
     }
 
 }
