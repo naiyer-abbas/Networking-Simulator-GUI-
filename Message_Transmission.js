@@ -106,7 +106,7 @@ import {list_bridges, Bridge} from './Bridge.js';
                 if(list_devices[arguments[0]].port[0] == list_devices[arguments[1]].get_mac_address())
                 {
                     end_to_end = 1;
-                    document.getElementById("para") += "Dedicated Connection! ";
+                    document.getElementById("para").innerHTML += "Dedicated Connection! ";
                 }
 
                 if(arguments[0] == tokken || end_to_end)
