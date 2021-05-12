@@ -13,7 +13,7 @@ export function token_fail_message()
 
 export function token_pass_message()
 {
-    document.getElementById("para").innerHTML += " <br><br> This device has the access to this channel now!. <br><br> Message transmission from  " + list_devices[document.getElementById("device1").value].mac_address + " to  " + list_devices[document.getElementById("device2").value].mac_address + " <br><br> Sending Packets..";
+    document.getElementById("para").innerHTML += " <br><br> The sender has the access to this channel now!. <br><br> Message transmission from  " + list_devices[document.getElementById("device1").value].mac_address + " to  " + list_devices[document.getElementById("device2").value].mac_address + " <br><br> Sending Packets..";
 }
 
 
