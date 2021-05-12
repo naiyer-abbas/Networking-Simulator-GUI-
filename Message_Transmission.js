@@ -419,8 +419,6 @@ import {list_bridges, Bridge} from './Bridge.js';
                             }
                         }
 
-                        var mark = 0;
-
                         for(var i = 0; i < s.ports.length; i++)
                         {
                             if(s.ports[i] == y.get_mac_address())
@@ -428,7 +426,6 @@ import {list_bridges, Bridge} from './Bridge.js';
                                if(s.table[i] != "-1")
                                {
                                    y.message += arguments[2];
-                                   mark = i;
                                    return;
                                } 
                             }
@@ -452,7 +449,15 @@ import {list_bridges, Bridge} from './Bridge.js';
                                     }
                                 }
                             }
-                            s.table[mark] = y.get_mac_address();
+                            
+                        for(var i = 0; i < s.ports.length; i++)
+                        {
+                            if(s.ports[i] == y.get_mac_address())
+                            {
+                               s.table[i] = y.get_mac_address();
+                               break; 
+                            }
+                        }
                     }
                     else
                     {
